@@ -4,10 +4,15 @@
 
 {% block body %}
     <h1>Edit City</h1>
-
+    <a class="btn btn-primary" href="{{ path('app_back_city_index') }}">back to list</a>
+   <p>
     {{ include('back/city/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_back_city_index') }}">back to list</a>
+   </p>
 
+
+    <p>
+        Attention, vous pouvez supprimer définitivement cette entrée !
+    </p>
     {{ include('back/city/_delete_form.html.twig') }}
 {% endblock %}

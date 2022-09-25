@@ -24,9 +24,10 @@
                 <td>{{ city.populationNumber }}</td>
                 <td>{{ city.department }}</td>
                 <td>{{ city.department.code }}</td>
+                <td>{{ city.department.country }}</td>
                 <td>
-                    <a href="{{ path('app_back_city_show', {'id': city.id}) }}">show</a>
-                    <a href="{{ path('app_back_city_edit', {'id': city.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('app_back_city_show', {'id': city.id}) }}">show</a>
+                    <a class="btn btn-secondary" href="{{ path('app_back_city_edit', {'id': city.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -37,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_city_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('app_back_city_new') }}">Create new</a>
 {% endblock %}

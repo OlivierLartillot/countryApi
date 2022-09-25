@@ -5,10 +5,12 @@ namespace App\Controller\Back;
 use App\Entity\City;
 use App\Form\CityType;
 use App\Repository\CityRepository;
+use App\Repository\DepartmentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/back/city")
@@ -18,10 +20,12 @@ class CityController extends AbstractController
     /**
      * @Route("/", name="app_back_city_index", methods={"GET"})
      */
-    public function index(CityRepository $cityRepository): Response
+    public function index(CityRepository $cityRepository, DepartmentRepository $departmentRepository): Response
     {
+
         return $this->render('back/city/index.html.twig', [
             'cities' => $cityRepository->findAll(),
+           
         ]);
     }
 

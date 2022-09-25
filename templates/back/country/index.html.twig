@@ -19,8 +19,8 @@
                 <td>{{ country.id }}</td>
                 <td>{{ country.name }}</td>
                 <td>
-                    <a href="{{ path('back_country_show', {'id': country.id}) }}">show</a>
-                    <a href="{{ path('back_country_edit', {'id': country.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('back_country_show', {'id': country.id}) }}">show</a>
+                    <a class="btn btn-secondary" href="{{ path('back_country_edit', {'id': country.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +31,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('back_country_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('back_country_new') }}">Create new</a>
 {% endblock %}
