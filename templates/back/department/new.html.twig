@@ -5,7 +5,9 @@
 {% block body %}
     <h1>Create new Department</h1>
 
+    <a class="btn btn-primary mb-3" href="{{ path('back_department_index') }}">back to list</a>
+    
     {{ include('back/department/_form.html.twig') }}
 
-    <a href="{{ path('back_department_index') }}">back to list</a>
+    
 {% endblock %}

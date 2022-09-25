@@ -2,20 +2,43 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\Country;
+use App\Repository\CountryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CountryApiController extends AbstractController
 {
+       
     /**
-     * @Route("/api/countries", name="app_api_country_api")
+     * @Route("/api/countries", name="app_api_countries_api")
      */
-    public function countries_list(): JsonResponse
+    public function countries_list(CountryRepository $countryRepository): JsonResponse
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/Api/CountryApiController.php',
-        ]);
+        $countries = $countryRepository->findAll();
+        return $this->json(
+            $countries,
+            200,
+            [],
+            ['groups' => 'countries',],
+            
+        );
     }
+
+    /**
+     * @Route("/api/countries/{id}", name="app_api_countries_api_id")
+     */
+    public function country(Country $country): JsonResponse
+    {
+
+        return $this->json(
+            $country,
+            200,
+            [],
+            ['groups' => 'country'],
+            
+        );
+    }
+
 }
