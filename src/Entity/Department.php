@@ -127,9 +127,6 @@ class Department
         return $this->name;
     }
 
-    /**
-    * @Groups({"countries"})
-    */
     public function getCountCities() 
     {
         return count($this->cities);

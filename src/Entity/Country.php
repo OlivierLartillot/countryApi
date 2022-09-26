@@ -94,6 +94,8 @@ class Country
     }
 
     /**
+    * Renvoie le nombre de départements associés à un pays:
+    * La fonction est un simple count sur la propriété département de la classe 
     * @Groups({"countries"})
     */
     public function getCountDepartments() 
@@ -102,6 +104,10 @@ class Country
     }
 
     /**
+    * Renvoie le nombre de ville d'un pays:  
+    * pour chaque département d'un pays, compte le nombre de villes associées
+    * et additione le tout.
+    * On additione donc la fonction countCities se trouvant dans l'entité Department
     * @Groups({"countries"})
     */
     public function getCountCities() 
@@ -112,8 +118,6 @@ class Country
         }
 
         return $countCities;
-   
-
     }
 
 
