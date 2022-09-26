@@ -25,7 +25,8 @@ class Country
      * @ORM\Column(type="string", length=255)
      * @Groups({"countries"})
      * @Groups({"country"})
-     * @Groups({"departments"})
+     * @Groups({"cities_details"})
+     * 
      */
     private $name;
 
@@ -91,4 +92,29 @@ class Country
     {
         return $this->name;
     }
+
+    /**
+    * @Groups({"countries"})
+    */
+    public function getCountDepartments() 
+    {
+        return count($this->departements);
+    }
+
+    /**
+    * @Groups({"countries"})
+    */
+    public function getCountCities() 
+    {
+        $countCities = 0;
+        foreach ($this->departements as $department) {
+            $countCities += $department->getCountCities();
+        }
+
+        return $countCities;
+   
+
+    }
+
+
 }

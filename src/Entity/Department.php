@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DepartmentRepository")
  */
@@ -24,12 +25,12 @@ class Department
      * @ORM\Column(type="string", length=255)
      * @Groups({"departments"})
      * @Groups({"department"})
+     * @Groups({"cities_details"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"departments"})
      * @Groups({"department"})
      */
     private $code;
@@ -37,7 +38,7 @@ class Department
     /**
      * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="departements")
      * @ORM\JoinColumn(nullable=true)
-     * @Groups({"departments"})
+     * @Groups({"cities_details"})
      */
     private $country;
 
@@ -125,4 +126,13 @@ class Department
     {
         return $this->name;
     }
+
+    /**
+    * @Groups({"countries"})
+    */
+    public function getCountCities() 
+    {
+        return count($this->cities);
+    }
+
 }
