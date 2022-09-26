@@ -23,6 +23,7 @@ class CityType extends AbstractType
                 'country_type' => CountryType::class,
            ])
              ->add('country', EntityType::class,[
+                'required'=>false,
                 'class'=>Country::class,
                 'choice_label' => 'name',
                 'label' => 'Pays',

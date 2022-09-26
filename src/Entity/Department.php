@@ -19,6 +19,7 @@ class Department
      * @Groups({"countries_details"})
      * @Groups({"departments", "departments_details"})
      * @Groups({"department"})
+     * @Groups({"show_ajax_departements"})
      */
     private $id;
 
@@ -28,6 +29,7 @@ class Department
      * @Groups({"departments", "departments_details"})
      * @Groups({"department"})
      * @Groups({"cities_details"})
+     * @Groups({"show_ajax_departements"})
      */
     private $name;
 

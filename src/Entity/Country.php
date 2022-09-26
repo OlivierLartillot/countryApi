@@ -34,7 +34,8 @@ class Country
 
     /**
      * @ORM\OneToMany(targetEntity=Department::class, mappedBy="country")
-     * @Groups({"countries_details"})
+     * @Groups({"countries_details"})  
+     * @Groups({"show_ajax_departements"})
      */
     private $departements;
 

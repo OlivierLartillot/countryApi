@@ -3,10 +3,13 @@
 namespace App\Controller\Back;
 
 use App\Entity\City;
+use App\Entity\Country;
 use App\Form\CityType;
 use App\Repository\CityRepository;
 use App\Repository\DepartmentRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -51,6 +54,39 @@ class CityController extends AbstractController
     }
 
     /**
+     * @Route("/ajax/departments/country/{id}", name="app_back_city_ajax")
+     */
+    public function ajaxDepartments(Country $country): JsonResponse
+    {
+        $data = $country->getDepartements();
+
+        try {
+            return $this->json(
+                    // les données à transformer en JSON
+                    $data,
+                    // HTTP STATUS CODE
+                    200,
+                    // HTTP headers supplémentaires, dans notre cas : aucune
+                    [],
+                    // Contexte de serialisation, les groups de propriété que l'on veux serialise
+                    ['groups' => ['show_ajax_departements']]
+            );
+    
+         } catch (Exception $e){ // si une erreur est LANCE, je l'attrape
+            // je gère l'erreur
+            // par exemple si tu me file un genre ['3000'] qui n existe pas...
+             return new JsonResponse("Hoouuu !! Ce qui vient d'arriver est de votre faute : JSON invalide", Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+
+
+        
+    }
+
+
+
+
+    /**
      * @Route("/{id}", name="app_back_city_show", methods={"GET"})
      */
     public function show(City $city): Response
@@ -91,4 +127,8 @@ class CityController extends AbstractController
 
         return $this->redirectToRoute('app_back_city_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
+
 }

@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}New City{% endblock %}
+{% block javascripts %}  {% endblock %}
 
 {% block body %}
     <h1>Create new City</h1>
 
     <a class="btn btn-primary mb-3" href="{{ path('app_back_city_index') }}">back to list</a>
 
+    {{ form_start(form)}}
+    
+        {{ form_row(form.name) }}
+        {{ form_row(form.populationNumber) }}
+        {{ form_row(form.country, {'attr': {'required': 'required'}} ) }}
+        {{ form_row(form.department) }}   
+    
+        <button class="btn btn-warning">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
 
-    {{ include('back/city/_form.html.twig') }}
-
-    <script src="{{ asset('js/departments.js') }}"></script> 
+    <script src="{{ asset('js/departments.js') }}"></script>
 {% endblock %}
