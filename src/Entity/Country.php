@@ -17,14 +17,16 @@ class Country
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"country"})
-     * @Groups({"countries"})
+     * @Groups({"countries", "countries_details"})
+     * @Groups({"departments_details"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"countries"})
+     * @Groups({"countries", "countries_details"})
      * @Groups({"country"})
+     * @Groups({"departments_details"})
      * @Groups({"cities_details"})
      * 
      */
@@ -32,7 +34,7 @@ class Country
 
     /**
      * @ORM\OneToMany(targetEntity=Department::class, mappedBy="country")
-     * 
+     * @Groups({"countries_details"})
      */
     private $departements;
 

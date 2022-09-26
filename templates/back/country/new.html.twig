@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}New Country{% endblock %}
 
 {% block body %}
@@ -8,6 +9,5 @@
     <a class="btn btn-primary mb-3" href="{{ path('back_country_index') }}">back to list</a>
    
     {{ include('back/country/_form.html.twig') }}
-
 
 {% endblock %}

@@ -27,23 +27,7 @@ class CityApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/cities/details", name="app_api_cities_api_details")
-     */
-    public function cities_list_details(CityRepository $countryRepository): JsonResponse
-    {
-        $cities = $countryRepository->findAll();
-        return $this->json(
-            $cities,
-            200,
-            [],
-            ['groups' => 'cities_details',],
-            
-        );
-    }
-
-
-    /**
-     * @Route("/api/cities/{id}", name="app_api_cities_api_id")
+     * @Route("/api/cities/{id}", requirements={"id" = "(\d+)"}, name="app_api_cities_api_id")
      */
     public function country(City $city): JsonResponse
     {
@@ -53,6 +37,21 @@ class CityApiController extends AbstractController
             200,
             [],
             ['groups' => 'city'],
+            
+        );
+    }
+
+    /**
+     * @Route("/api/cities/details", name="app_api_cities_api_details")
+     */
+    public function cities_list_details(CityRepository $cityRepository): JsonResponse
+    {
+        $cities = $cityRepository->findAll();
+        return $this->json(
+            $cities,
+            200,
+            [],
+            ['groups' => 'cities_details',],
             
         );
     }

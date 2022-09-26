@@ -14,18 +14,24 @@ class City
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"countries_details"})
+     * @Groups({"departments_details"})
      * @Groups({"cities", "cities_details"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"countries_details"})
+     * @Groups({"departments_details"})
      * @Groups({"cities", "cities_details"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups({"countries_details"})
+     * @Groups({"departments_details"})
      * @Groups({"cities_details"})
      */
     private $populationNumber;

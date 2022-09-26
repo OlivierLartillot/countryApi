@@ -19,9 +19,9 @@ class DepartmentApiController extends AbstractController
      */
     public function departments_list(DepartmentRepository $departmentRepository): JsonResponse
     {
-        $countries = $departmentRepository->findAll();
+        $departments = $departmentRepository->findAll();
         return $this->json(
-            $countries,
+            $departments,
             200,
             [],
             ['groups' => 'departments',],
@@ -30,7 +30,7 @@ class DepartmentApiController extends AbstractController
     }
 
     /**
-     * @Route("/api/departments/{id}", name="app_api_departments_api_id")
+     * @Route("/api/departments/{id}", requirements={"id" = "(\d+)"}, name="app_api_departments_api_id")
      */
     public function department(Department $dpt): JsonResponse
     {
@@ -40,6 +40,21 @@ class DepartmentApiController extends AbstractController
             200,
             [],
             ['groups' => 'department',],
+            
+        );
+    }
+
+    /**
+     * @Route("/api/departments/details", name="app_api_departments_api_details")
+     */
+    public function departments_list_details(DepartmentRepository $departmentRepository): JsonResponse
+    {
+        $departments = $departmentRepository->findAll();
+        return $this->json(
+            $departments,
+            200,
+            [],
+            ['groups' => 'departments_details',],
             
         );
     }

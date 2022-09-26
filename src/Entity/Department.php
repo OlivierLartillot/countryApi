@@ -16,14 +16,16 @@ class Department
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"departments"})
+     * @Groups({"countries_details"})
+     * @Groups({"departments", "departments_details"})
      * @Groups({"department"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"departments"})
+     * @Groups({"countries_details"})
+     * @Groups({"departments", "departments_details"})
      * @Groups({"department"})
      * @Groups({"cities_details"})
      */
@@ -31,7 +33,8 @@ class Department
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups({"department"})
+     * @Groups({"countries_details"})
+     * @Groups({"department", "departments_details"})
      */
     private $code;
 
@@ -39,11 +42,14 @@ class Department
      * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="departements")
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"cities_details"})
+     * @Groups({"departments_details"})
      */
     private $country;
 
     /**
      * @ORM\OneToMany(targetEntity=City::class, mappedBy="department")
+     * @Groups({"countries_details"})
+     * @Groups({"departments_details"})
      */
     private $cities;
 
@@ -127,6 +133,11 @@ class Department
         return $this->name;
     }
 
+    /**
+     * Renvoie le nombre de villes dans un département
+     * @Groups({"countries_details"})
+     * @Groups({"departments","departments_details"})
+     */
     public function getCountCities() 
     {
         return count($this->cities);
