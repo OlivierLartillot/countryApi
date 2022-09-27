@@ -21,14 +21,27 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class CityController extends AbstractController
 {
     /**
-     * @Route("/", name="app_back_city_index", methods={"GET"})
+     * @Route("/", name="app_back_city_index", methods={"GET", "POST"})
      */
-    public function index(CityRepository $cityRepository, DepartmentRepository $departmentRepository): Response
+    public function index(CityRepository $cityRepository, Request $request): Response
     {
+    
+        // Ne charger que les données dont j'ai besoin
+        $value = "";
+        // si la requete viens du bouton search
+        if (($request->getMethod() =="POST") AND ($request->get('search-submit') !== null ) ){
+            $search = $request->get('search-input');
+            $value = $request->get('search-input');
+            $cities = $cityRepository->findLikeCityName($search);
+        } else {
+            $cities = $cityRepository->findAll();
+        } 
+
+        
 
         return $this->render('back/city/index.html.twig', [
-            'cities' => $cityRepository->findAll(),
-           
+            'cities' => $cities,
+            'value' => $value
         ]);
     }
 
@@ -39,8 +52,10 @@ class CityController extends AbstractController
     {
         $city = new City();
         $form = $this->createForm(CityType::class, $city);
+        
         $form->handleRequest($request);
-
+        // le nom du formulaire renvoyé 
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $cityRepository->add($city, true);
 

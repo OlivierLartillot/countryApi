@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for country in countries %}
+        {% for country in countries | sort((a, b) => a.name <=> b.name) %}
             <tr>
                 <td>{{ country.id }}</td>
                 <td>{{ country.name }}</td>

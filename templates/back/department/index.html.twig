@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for department in departments %}
+        {% for department in departments | sort((a, b) => a.name <=> b.name)%}
             <tr>
                 <td>{{ department.id }}</td>
                 <td>{{ department.name }}</td>

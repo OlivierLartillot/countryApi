@@ -8,7 +8,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>N°</th>
                 <th>Name</th>
                 <th>PopulationNumber</th>
                 <th>Departement</th>
@@ -17,9 +17,10 @@
             </tr>
         </thead>
         <tbody>
-        {% for city in cities %}
+        {% set i=1 %}    
+        {% for city in cities | sort((a, b) => a.name <=> b.name)%}
             <tr>
-                <td>{{ city.id }}</td>
+                <td>{{ i }} </td>
                 <td>{{ city.name }}</td>
                 <td>{{ city.populationNumber }}</td>
                 <td>{{ city.department }}</td>
@@ -30,10 +31,12 @@
                     <a class="btn btn-secondary" href="{{ path('app_back_city_edit', {'id': city.id}) }}">edit</a>
                 </td>
             </tr>
+        {% set i = i+1 %}
         {% else %}
             <tr>
                 <td colspan="4">no records found</td>
             </tr>
+        
         {% endfor %}
         </tbody>
     </table>
