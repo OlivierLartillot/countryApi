@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid"> 
+      <a class="navbar-brand" href="{{ path('app_index') }}">City API</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">          
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{ path('app_countries') }}">Pays</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_departments') }}">Départements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ path('app_cities') }}">Villes</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          {% if app.user %}
+          <a href="{{ path('app_logout') }}"class="btn btn-outline-danger">Se Déconnecter</a>          
+          {% else %}
+          <a href="{{ path('app_login') }}" class="btn btn-outline-primary">Se connecter</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+</nav>
