@@ -2,6 +2,8 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\EndpointCategory;
+use App\Repository\EndpointCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,26 +22,38 @@ class HomeController extends AbstractController
     /**
      * @Route("/countries", name="app_countries")
      */
-    public function countries(): Response
+    public function countries(EndpointCategoryRepository $endpointCategoryRepository): Response
     {
+        $categoryCountry = $endpointCategoryRepository->findOneBy(['name' => 'Country']);
+        $endpointsCountry = $categoryCountry->getEndpoints();
 
-        return $this->render('front/home/countries.html.twig');
+        return $this->render('front/home/countries.html.twig', [
+            'endpointsCountry' => $endpointsCountry
+        ]);
     }
     
     /**
     * @Route("/departments", name="app_departments")
     */
-   public function departments(): Response
+   public function departments(EndpointCategoryRepository $endpointCategoryRepository): Response
    {
-       return $this->render('front/home/departments.html.twig');
+        $categoryDpts = $endpointCategoryRepository->findOneBy(['name' => 'Department']);
+        $endpointsDepartment = $categoryDpts->getEndpoints();
+        return $this->render('front/home/departments.html.twig', [
+            'endpointsDepartment' => $endpointsDepartment
+       ]);
    }
 
     /**
      * @Route("/cities", name="app_cities")
      */
-    public function cities(): Response
+    public function cities(EndpointCategoryRepository $endpointCategoryRepository): Response
     {
-        return $this->render('front/home/cities.html.twig');
+        $categoryCity = $endpointCategoryRepository->findOneBy(['name' => 'City']);
+        $endpointsCity = $categoryCity->getEndpoints();
+        return $this->render('front/home/cities.html.twig', [
+            'endpointsCity' => $endpointsCity
+       ]);
     }
 
 }

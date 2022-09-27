@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EndpointCategory index{% endblock %}
+
+{% block body %}
+    <h1>EndpointCategory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for endpoint_category in endpoint_categories %}
+            <tr>
+                <td>{{ endpoint_category.id }}</td>
+                <td>{{ endpoint_category.name }}</td>
+                <td>
+                    <a href="{{ path('app_back_endpoint_category_show', {'id': endpoint_category.id}) }}">show</a>
+                    <a href="{{ path('app_back_endpoint_category_edit', {'id': endpoint_category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_endpoint_category_new') }}">Create new</a>
+{% endblock %}

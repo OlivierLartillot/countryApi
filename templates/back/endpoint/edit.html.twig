@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Endpoint{% endblock %}
+
+{% block body %}
+    <h1>Edit Endpoint</h1>
+
+    {{ include('back/endpoint/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_back_endpoint_index') }}">back to list</a>
+
+    {{ include('back/endpoint/_delete_form.html.twig') }}
+{% endblock %}

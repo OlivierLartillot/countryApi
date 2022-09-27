@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\EnpointCategory;
+use App\Entity\EndpointCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<EnpointCategory>
+ * @extends ServiceEntityRepository<EndpointCategory>
  *
- * @method EnpointCategory|null find($id, $lockMode = null, $lockVersion = null)
- * @method EnpointCategory|null findOneBy(array $criteria, array $orderBy = null)
- * @method EnpointCategory[]    findAll()
- * @method EnpointCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method EndpointCategory|null find($id, $lockMode = null, $lockVersion = null)
+ * @method EndpointCategory|null findOneBy(array $criteria, array $orderBy = null)
+ * @method EndpointCategory[]    findAll()
+ * @method EndpointCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EnpointCategoryRepository extends ServiceEntityRepository
+class EndpointCategoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, EnpointCategory::class);
+        parent::__construct($registry, EndpointCategory::class);
     }
 
-    public function add(EnpointCategory $entity, bool $flush = false): void
+    public function add(EndpointCategory $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class EnpointCategoryRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(EnpointCategory $entity, bool $flush = false): void
+    public function remove(EndpointCategory $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class EnpointCategoryRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return EnpointCategory[] Returns an array of EnpointCategory objects
+//     * @return EndpointCategory[] Returns an array of EndpointCategory objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class EnpointCategoryRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?EnpointCategory
+//    public function findOneBySomeField($value): ?EndpointCategory
 //    {
 //        return $this->createQueryBuilder('e')
 //            ->andWhere('e.exampleField = :val')

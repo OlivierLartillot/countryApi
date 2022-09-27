@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit EndpointCategory{% endblock %}
+
+{% block body %}
+    <h1>Edit EndpointCategory</h1>
+
+    {{ include('back/endpoint_category/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_back_endpoint_category_index') }}">back to list</a>
+
+    {{ include('back/endpoint_category/_delete_form.html.twig') }}
+{% endblock %}

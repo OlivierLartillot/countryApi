@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\EnpointCategoryRepository;
+use App\Repository\EndpointCategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=EnpointCategoryRepository::class)
+ * @ORM\Entity(repositoryClass=EndpointCategoryRepository::class)
  */
-class EnpointCategory
+class EndpointCategory
 {
     /**
      * @ORM\Id
@@ -25,7 +25,7 @@ class EnpointCategory
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=endpoint::class, mappedBy="enpointCategory")
+     * @ORM\OneToMany(targetEntity=Endpoint::class, mappedBy="endpointCategory")
      */
     private $endpoints;
 
@@ -63,7 +63,7 @@ class EnpointCategory
     {
         if (!$this->endpoints->contains($endpoint)) {
             $this->endpoints[] = $endpoint;
-            $endpoint->setEnpointCategory($this);
+            $endpoint->setEndpointCategory($this);
         }
 
         return $this;
@@ -73,11 +73,16 @@ class EnpointCategory
     {
         if ($this->endpoints->removeElement($endpoint)) {
             // set the owning side to null (unless already changed)
-            if ($endpoint->getEnpointCategory() === $this) {
-                $endpoint->setEnpointCategory(null);
+            if ($endpoint->getEndpointCategory() === $this) {
+                $endpoint->setEndpointCategory(null);
             }
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

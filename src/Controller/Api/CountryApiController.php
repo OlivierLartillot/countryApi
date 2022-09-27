@@ -37,7 +37,6 @@ class CountryApiController extends AbstractController
             200,
             [],
             ['groups' => 'country'],
-            
         );
     }
 

@@ -28,10 +28,10 @@ class Endpoint
     private $endpoint;
 
     /**
-     * @ORM\ManyToOne(targetEntity=EnpointCategory::class, inversedBy="endpoints")
+     * @ORM\ManyToOne(targetEntity=EndpointCategory::class, inversedBy="endpoints")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $enpointCategory;
+    private $endpointCategory;
 
     public function getId(): ?int
     {
@@ -62,15 +62,17 @@ class Endpoint
         return $this;
     }
 
-    public function getEnpointCategory(): ?EnpointCategory
+    public function getEndpointCategory(): ?EndpointCategory
     {
-        return $this->enpointCategory;
+        return $this->endpointCategory;
     }
 
-    public function setEnpointCategory(?EnpointCategory $enpointCategory): self
+    public function setEndpointCategory(?EndpointCategory $endpointCategory): self
     {
-        $this->enpointCategory = $enpointCategory;
+        $this->endpointCategory = $endpointCategory;
 
         return $this;
     }
+
+
 }
