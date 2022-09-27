@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Routes des pays - countryApi{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center mb-5">Routes liées au pays</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</tH>
+                <th scope="col">desc.</th>
+                <th scope="col">liens rapide</tH>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>toutes</td>
+                <td><a href="{{ path('app_api_countries_api') }}">Pays</a></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>
+            
+                  
+                  Liste de tous les départements</td>
+                <td>www.maroute.fr</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+  </div>
+
+</div>
+
+{% endblock %}

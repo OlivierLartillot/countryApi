@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - countryApi{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center mb-5">Bienvenue sur countryApi</h1>
+
+    <h2>Back-office</h2>
+    <p class="lead">
+        CountryApi est un exemple d'api qui permet au développeur back d'enregistrer 
+        <ul>
+            <li>des Pays</li>
+            <li>des départements associés à un pays</li>
+            <li>des villes associées à un département</li>
+        </ul>
+    <hr class="my-4 mx-4">
+        Pour utiliser <strong class="text-danger">le Back-office</strong>, vous devez créer un utilisateur en base de données. Pour plus de simplicité la page /register est aussi active. La page /login est également disponible pour vous connecter.
+    <hr class="my-4 mx-4">
+        Un exemple de <strong class="text-danger">requête AJAX</strong> est disponible dans les pages create/update de back/city/. L'utilisateur choisi un pays (qui n'est pas mappé dans le CityType) ce qui fait apparaître une balise "select" des départements associés à ce pays. Vous pouvez alors choisir le département adapté à la ville avec une liste comportant uniquement ceux reliés au pays choisi.
+    <hr class="my-4 mx-4">
+        Sur cette version, <strong class="text-danger">la recherche</strong> en haut de page n'est fonctionnelle que sur la page back/city pour rechercher une ou plusieurs villes dans la liste. La mise en place est faite par requête DQL et LIKE. 
+    </p>
+    <hr class="my-4">
+    <h2>Les routes disponibless</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</tH>
+                <th scope="col">desc.</th>
+                <th scope="col">liens rapide</tH>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Les routes qui concernent le pays</td>
+                <td><a href="{{path('app_countries')}}">Pays</a></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>
+            
+                  
+                  Liste de tous les départements</td>
+                <td>www.maroute.fr</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+  </div>
+
+</div>
+
+{% endblock %}
