@@ -16,7 +16,7 @@ class City
      * @ORM\Column(type="integer")
      * @Groups({"countries_details"})
      * @Groups({"departments_details"})
-     * @Groups({"cities", "cities_details"})
+     * @Groups({"city", "cities", "cities_details"})
      */
     private $id;
 
@@ -24,7 +24,7 @@ class City
      * @ORM\Column(type="string", length=255)
      * @Groups({"countries_details"})
      * @Groups({"departments_details"})
-     * @Groups({"cities", "cities_details"})
+     * @Groups({"city","cities", "cities_details"})
      */
     private $name;
 
@@ -32,7 +32,7 @@ class City
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"countries_details"})
      * @Groups({"departments_details"})
-     * @Groups({"cities_details"})
+     * @Groups({"city", "cities_details"})
      */
     private $populationNumber;
 
