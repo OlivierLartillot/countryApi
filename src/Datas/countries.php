@@ -1,3 +1,0 @@
-$countries = {
-    'url' => 'mon url' 
-}
